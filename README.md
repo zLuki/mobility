@@ -10,4 +10,18 @@ Logischerweise ist eine Internetverbindung nötig.
 
 ### Technische Details
 
-Unser Service greift auf zwei APIs zurück. Das Wetter wird mit Hilfe der [openweathermap API](https://openweathermap.org/) angezeigt.
+Unser Service greift auf zwei APIs zurück:
+- Das Wetter wird mit Hilfe der [openweathermap API](https://openweathermap.org/) angezeigt.
+- Die Abfahrten der Züge und Busse werden mit Hilfe der [opendata Südtirol API](http://daten.buergernetz.bz.it/de/group/mobility) angezeigt.
+
+Verwendet wird reines HTML/CSS/JS, ohne Frameworks.
+Beim Programmierstil wollten wir etwas neues ausprobieren und benutzen deshalb das funktionale Programmierparadigma.
+
+### Design
+
+Description coming soon ...
+
+### Autoren
+
+Alex Unterleitner
+Lukas Schatzer
