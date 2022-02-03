@@ -1,4 +1,6 @@
 window.onload = function() {
+
+    //document.getElementById("mainScreen").style.backgroundSize = "110%";
     /*fetchBusApi();
     fetchWeatherApi();
     const weatherThread = setInterval(fetchWeatherApi, 60*1000);*/
@@ -74,8 +76,8 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
     textDiv.appendChild(day);
     textDiv.appendChild(temperature);
     textDiv.classList.add("weatherDayTextDiv");
+    div.appendChild(img);
     div.appendChild(textDiv);
-    //div.appendChild(img);
     div.classList.add("glass");
     document.getElementById("weatherDays").appendChild(div);
 }
