@@ -23,5 +23,5 @@ Description coming soon ...
 
 ### Autoren
 
-Alex Unterleitner
-Lukas Schatzer
+- Alex Unterleitner
+- Lukas Schatzer

@@ -61,17 +61,21 @@ function fetchWeatherApi() {
 function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
     const div = document.createElement("div");
     const img = document.createElement("img");
-    const day = document.createElement("p");
-    const temperature = document.createElement("p");
+    const day = document.createElement("span");
+    const temperature = document.createElement("span");
     const textDiv = document.createElement("div");
-    day.innerText = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][new Date(date).getDay()];
-    img.src = weatherInfo + ".png";
-    temperature.innerText = `${Math.round(minTemp)}° / ${Math.round(maxTemp)}°`;
+    day.innerHTML = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][new Date(date).getDay()] + "&nbsp;&nbsp;";
+    temperature.classList.add("temperaturText");
+    day.classList.add("dayText");
+    console.log("weatherIcons/" + weatherInfo + ".png");
+    img.src = "./weatherIcons/" + weatherInfo + ".png";
+    img.style.height = "10vh";
+    temperature.innerText = `${Math.round(minTemp)}°/ ${Math.round(maxTemp)}°`;
     textDiv.appendChild(day);
     textDiv.appendChild(temperature);
     textDiv.classList.add("weatherDayTextDiv");
     div.appendChild(textDiv);
-    div.appendChild(img);
-    div.classList.add("weatherDay");
+    //div.appendChild(img);
+    div.classList.add("glass");
     document.getElementById("weatherDays").appendChild(div);
 }
