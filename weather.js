@@ -7,9 +7,9 @@ window.onload = function() {
     //fetchTrainApi();
     fetchWeatherApi();
     //fetchBusApi();
-    
+
     /*fetchTrainApi(JSON.parse(
-        `[{"id":"00401","num":"401","name":"Bruneck, Busbahnhof","countdown":2},{"id":"02320","num":"320.1","name":"Milland, Zeffer","countdown":2},{"id":"85310","num":"310","name":"Brixen, Bahnhof Brixen","countdown":6},{"id":"02328","num":"328","name":"Brixen, Bahnhof","countdown":8},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":10},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":12},{"id":"02170","num":"170","name":"Kastelruth, Busbahnhof","countdown":16},{"id":"02320","num":"320.1","name":"Albeins, Grundschule","countdown":17},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":18},{"id":"85310","num":"310","name":"Sterzing, Nordpark","countdown":23},{"id":"02328","num":"328","name":"Natz - Schabs","countdown":25},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":27}]`    
+        `[{"id":"00401","num":"401","name":"Bruneck, Busbahnhof","countdown":2},{"id":"02320","num":"320.1","name":"Milland, Zeffer","countdown":2},{"id":"85310","num":"310","name":"Brixen, Bahnhof Brixen","countdown":6},{"id":"02328","num":"328","name":"Brixen, Bahnhof","countdown":8},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":10},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":12},{"id":"02170","num":"170","name":"Kastelruth, Busbahnhof","countdown":16},{"id":"02320","num":"320.1","name":"Albeins, Grundschule","countdown":17},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":18},{"id":"85310","num":"310","name":"Sterzing, Nordpark","countdown":23},{"id":"02328","num":"328","name":"Natz - Schabs","countdown":25},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":27}]`
     ));*/
 
 }
@@ -61,7 +61,7 @@ function fetchWeatherApi() {
 }
 
 function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
-    const div = document.createElement("div");
+    /*const div = document.createElement("div");
     const img = document.createElement("img");
     const day = document.createElement("span");
     const temperature = document.createElement("span");
@@ -79,5 +79,139 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
     div.appendChild(img);
     div.appendChild(textDiv);
     div.classList.add("glass");
-    document.getElementById("weatherDays").appendChild(div);
+    document.getElementById("weatherDays").appendChild(div);*/
+    //weatherInfo = "11";
+    switch (weatherInfo) {
+      case "01":
+      document.getElementById("weatherDays").innerHTML +=
+      `<div class="container">
+        <div class="background">
+          <div class="Circle1"></div>
+          <div class="Circle2"></div>
+          <div class="Circle3"></div>
+          <div class="content">
+            <h1 class="Condition"><i class="material-icons sun">wb_sunny</i> Sunny</h1>
+            <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+            <h1 class="Time">Muntig</h1>
+            <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+          </div>
+        </div>`;
+        break;
+      case "02":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerSunCloud">
+          <div class="background">
+            <div class="Circle1SunCloud"></div>
+            <div class="Circle2SunCloud"></div>
+            <div class="Circle3SunCloud"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Sunny</h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "03":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerCloud">
+          <div class="background">
+            <div class="Circle1Cloud"></div>
+            <div class="Circle2Cloud"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "04":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerDarkCloud">
+          <div class="background">
+            <div class="Circle1DarkCloud"></div>
+            <div class="Circle2DarkCloud"></div>
+            <div class="Circle3DarkCloud"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "09" || "10":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerRain">
+          <div class="background">
+            <div class="Regen"></div>
+            <div class="Circle1Rain"></div>
+            <div class="Circle2Rain"></div>
+            <div class="Circle3Rain"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "11":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerStorm">
+          <div class="background">
+            <div class="Rain"></div>
+            <div class="Blitz"></div>
+            <div class="Circle1Storm"></div>
+            <div class="Circle2Storm"></div>
+            <div class="Circle3Storm"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "13":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerSnow">
+          <div class="background">
+            <div class="Snow"></div>
+            <div class="Circle1Rain"></div>
+            <div class="Circle2Rain"></div>
+            <div class="Circle3Rain"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time"></h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+          </div>`;
+          console.log("volle");
+          break;
+        case "50":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerFog">
+        <div class="background">
+        <div class="Circle1Fog"></div>
+        <div class="Circle2Fog"></div>
+        <div class="Circle3Fog"></div>
+        <div class="content">
+        <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> </h1>
+        <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+        <h1 class="Time"></h1>
+        <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+        </div>
+        </div>
+        </div>`
+        break;
+    }
 }
