@@ -61,26 +61,21 @@ function fetchWeatherApi() {
 }
 
 function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
-    /*const div = document.createElement("div");
-    const img = document.createElement("img");
-    const day = document.createElement("span");
-    const temperature = document.createElement("span");
-    const textDiv = document.createElement("div");
-    day.innerHTML = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][new Date(date).getDay()] + "&nbsp;&nbsp;";
-    temperature.classList.add("temperaturText");
-    day.classList.add("dayText");
-    console.log("weatherIcons/" + weatherInfo + ".png");
-    img.src = "./weatherIcons/" + weatherInfo + ".png";
-    img.style.height = "10vh";
-    temperature.innerText = `${Math.round(minTemp)}°/ ${Math.round(maxTemp)}°`;
-    textDiv.appendChild(day);
-    textDiv.appendChild(temperature);
-    textDiv.classList.add("weatherDayTextDiv");
-    div.appendChild(img);
-    div.appendChild(textDiv);
-    div.classList.add("glass");
-    document.getElementById("weatherDays").appendChild(div);*/
-    // weatherInfo = "01";
+    
+    //weatherInfo = "04";
+    if (date == new Date().toISOString().split('T')[0]) {
+      switch(weatherInfo) {
+        case "01": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;
+        case "02": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;
+        case "03": document.getElementById("mainScreen").style.backgroundImage = "url('./background_cloudy.jpg')"; break;
+        case "04": document.getElementById("mainScreen").style.backgroundImage = "url('./background_dark_cloudy.png')"; break;
+        case "09" || "10": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
+        case "11": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
+        case "13": document.getElementById("mainScreen").style.backgroundImage = "url('./background_snow_gif.gif')"; break;
+        case "50": document.getElementById("mainScreen").style.backgroundImage = "url('./background_cloudy.jpg')"; break;
+      }
+    }
+
     const weekDays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
     switch (weatherInfo) {
       case "01":
@@ -91,7 +86,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
           <div class="Circle2"></div>
           <div class="Circle3"></div>
           <div class="content">
-            <h1 class="Condition"><i class="material-icons sun">wb_sunny</i> Sunny</h1>
+            <h1 class="Condition"><i class="material-icons sun">wb_sunny</i> Sonnig</h1>
             <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
             <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
             <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -106,7 +101,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2SunCloud"></div>
             <div class="Circle3SunCloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Cloudy</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bevölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -121,7 +116,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle1Cloud"></div>
             <div class="Circle2Cloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Cloudy</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bevölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -137,7 +132,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2DarkCloud"></div>
             <div class="Circle3DarkCloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Cloudy</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Stark bevölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -154,7 +149,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Rain"></div>
             <div class="Circle3Rain"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Rain</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Regen</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -172,7 +167,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Storm"></div>
             <div class="Circle3Storm"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Storm</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Gewitter</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -189,7 +184,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Rain"></div>
             <div class="Circle3Rain"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Snow</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Schnee</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -206,7 +201,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
           <div class="Circle2Fog"></div>
           <div class="Circle3Fog"></div>
           <div class="content">
-            <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Fog</h1>
+            <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Nebel</h1>
             <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
             <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
             <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
