@@ -18,9 +18,17 @@ function fetchBusApi() {
                     parseInt(dataset.countdown)
                 )
             )
-            /*.forEach(dataset =>
-                console.log(dataset)
-            )*/
+            .map(dataset => {
+                
+                document.getElementById("busDepartures").innerHTML +=
+                `<div>
+                    <span class='departure-font'>${dataset.num}</span>
+                    <span class='departure-font'>${dataset.name}</span>
+                    <span class='departure-font'>${dataset.countdown}</span>
+                </div>`;
+
+                return dataset;
+            })
         )
     );
 }

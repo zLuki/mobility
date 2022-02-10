@@ -2,7 +2,8 @@ class SimplifiedDeparture {
     constructor (id, num, name, countdown) {
         this.id = id;
         this.num = num;
-        this.name = name;
+        let index = name.indexOf(",");
+        this.name = index >= 0 ? name.slice(0, index) : name;
         this.countdown = countdown;
     }
 }

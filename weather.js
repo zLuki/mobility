@@ -6,7 +6,7 @@ window.onload = function() {
     const weatherThread = setInterval(fetchWeatherApi, 60*1000);*/
     //fetchTrainApi();
     fetchWeatherApi();
-    //fetchBusApi();
+    fetchBusApi();
 
     /*fetchTrainApi(JSON.parse(
         `[{"id":"00401","num":"401","name":"Bruneck, Busbahnhof","countdown":2},{"id":"02320","num":"320.1","name":"Milland, Zeffer","countdown":2},{"id":"85310","num":"310","name":"Brixen, Bahnhof Brixen","countdown":6},{"id":"02328","num":"328","name":"Brixen, Bahnhof","countdown":8},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":10},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":12},{"id":"02170","num":"170","name":"Kastelruth, Busbahnhof","countdown":16},{"id":"02320","num":"320.1","name":"Albeins, Grundschule","countdown":17},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":18},{"id":"85310","num":"310","name":"Sterzing, Nordpark","countdown":23},{"id":"02328","num":"328","name":"Natz - Schabs","countdown":25},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":27}]`
@@ -62,7 +62,7 @@ function fetchWeatherApi() {
 
 function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
     
-    //weatherInfo = "04";
+    //weatherInfo = "13";
     if (date == new Date().toISOString().split('T')[0]) {
       switch(weatherInfo) {
         case "01": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;

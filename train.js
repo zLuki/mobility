@@ -73,7 +73,15 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
             dataset
         )
         .forEach(dataset =>
-            console.log(dataset)    
+            document.getElementById("trainDepartures").innerHTML += 
+            `<div>
+                <span class='departure-font'>${dataset[0].num}</span>
+                <span class='departure-font'>${dataset[0].name}</span>
+                <span class='departure-font'>${dataset[0].countdown}</span>
+                <span class='departure-font'>${dataset[1] ? dataset[1].num : ""}</span>
+                <span class='departure-font'>${dataset[1] ? dataset[1].name : ""}</span>
+                <span class='departure-font'>${dataset[1] ? dataset[1].countdown : ""}</span>
+            </div>`
         )
     );
 }

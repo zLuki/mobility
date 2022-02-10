@@ -579,3 +579,31 @@ body {
   -ms-transform-origin: left center;
   transform-origin: left center;
 }
+
+#bus-train {
+    overflow: hidden;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    position: relative;
+    margin: 15px auto;
+    margin-right: 15px;
+    min-height: 95%;
+    width: 50%;
+    background-color: #252633;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+    font-family: 'Allerta Stencil';
+    font-size: 22px;
+    color: orange;
+}
+
+.screenContainer {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.departure-font {
+    color: orange;
+}
