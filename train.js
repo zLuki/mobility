@@ -1,26 +1,5 @@
-// lsShowTrainsExplicit = 1
-
-// 66001502
-
-//https://efa.sta.bz.it/apb/XML_DM_REQUEST?language=de&type_dm=stopID&stateless=1&name_dm=66001502&outputFormat=json&mode=direct
-
-
-/*
-
-http://efa.sta.bz.it/apb/XML_DM_REQUEST?locationServerActive=0&type_sf=coord&name_sf=' + longitude +':' + latitude +':WGS84[DD.DDDDD]&outputFormat=json'
-
-*/
-
-// https://efa.sta.bz.it/apb/XML_STOPFINDER_REQUEST?locationServerActive=0&type_sf=coord&name_sf=11.64999:46.71004:WGS84[DD.DDDDD]&outputFormat=json
-
-// , 
-
-// 66000998
-
 function fetchTrainApi(busDeparturesAtFallmerayer) {
-    //console.log(busDeparturesAtFallmerayer);
-    console.log("ICH WER AUFGERUAFEN");
-
+    // GET request
     fetch("https://efa.sta.bz.it/apb/XML_DM_REQUEST?language=de&type_dm=stopID&stateless=1&name_dm=66000998&outputFormat=json&mode=direct&lsShowTrainsExplicit=1&limit=250", {
         method: "GET"
     })
@@ -29,6 +8,7 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
         document.getElementById("trainDepartures").innerHTML = "";
         JSON.parse(res)
         .departureList
+        // Filter out non trains and buses that doesn't drive to the station
         .filter(dataset =>
             (dataset
             .servingLine
@@ -40,13 +20,13 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
             ) <= 60)
             ||
             busDeparturesAtFallmerayer.some(busDataset =>
-                //busDataset.id === dataset.servingLine.number
                 busDataset.id === dataset.servingLine.liErgRiProj.line
                 &&
                 busDataset.countdown < parseInt(dataset.countdown)
             )
             
         )
+        // Matches train with bus that drives in time to the station
         .map((dataset, _, self) =>
             dataset.servingLine.lineDisplay === "train" ?
             [
@@ -70,9 +50,11 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
             :
             null
         )
+        // Filter out null values
         .filter(dataset => 
             dataset
         )
+        // Add trains to the screen
         .forEach(dataset =>
             document.getElementById("trainDepartures").innerHTML += 
             `<tr>

@@ -1,3 +1,4 @@
+// Stellt eine Departure dar
 class SimplifiedDeparture {
     constructor (id, num, name, countdown) {
         this.id = id;

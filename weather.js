@@ -1,16 +1,11 @@
-const DEBUG = false;
-
 window.onload = function() {
-
-    if (DEBUG) {
-      fetchWeatherApi();
-      return;
-    }
-
     fetchWeatherApi();
     fetchBusApi();
+    // Wetter regelmäßig aktualisieren
     setInterval(fetchWeatherApi, 60 * 1000);
+    // Busse und Züge regelmäßig aktualisieren
     setInterval(fetchBusApi, 10 * 1000);
+    // Zeit anzeigen
     setInterval(function() {
       let today = new Date();
       let date = today.getDate().toString().padStart(2,"0")+'.'+(today.getMonth()+1).toString().padStart(2,"0")+'.'+today.getFullYear();
@@ -21,11 +16,20 @@ window.onload = function() {
 }
 
 function fetchWeatherApi() {
+    // Get request
     fetch("https://api.openweathermap.org/data/2.5/forecast?id=6535887&appid=dc704448494ba8187b5e3cf65aafac7f&cnt=40&units=metric&lang=de", {
         method: "GET"
     })
     .then(res => res.text())
     .then(res => {
+
+        /*
+          Fasst alle Wetter Datensätze eines Tages zusammen und merkt sich dabei die Min/Max Temperatur
+          Zudem wird ein Object mit der Anzahl der verschiedenen Wetterverhältnisse erstellt
+          Das Wetter mit der höhsten Anzahl wird dann verwendet
+          Bei gelichstand wird das schönere Wetter verwendet, um gute Laune zu erzeugen :))
+        */
+
         document.getElementById("weatherDays").innerHTML = "";
         const upcomingDays = {};
         JSON.parse(res).list.forEach(dataset => {
@@ -57,6 +61,7 @@ function fetchWeatherApi() {
                     [0];
             }
             createWeatherIcon(
+                i,
                 key,
                 val.minTemp,
                 val.maxTemp,
@@ -66,10 +71,11 @@ function fetchWeatherApi() {
     });
 }
 
-function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
+function createWeatherIcon(index, date, minTemp, maxTemp, weatherInfo) {
     
-    //weatherInfo = "04";
-    if (date == new Date().toISOString().split('T')[0]) {
+    //weatherInfo = "50";
+    //if (date == new Date().toISOString().split('T')[0]) {
+    if (index === 0) {
       switch(weatherInfo) {
         case "01": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;
         case "02": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;
@@ -78,7 +84,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
         case "09" || "10": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
         case "11": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
         case "13": document.getElementById("mainScreen").style.backgroundImage = "url('./background_snow_gif.gif')"; break;
-        case "50": document.getElementById("mainScreen").style.backgroundImage = "url('./background_cloudy.jpg')"; break;
+        case "50": document.getElementById("mainScreen").style.backgroundImage = "url('./background_fog.png')"; break;
       }
     }
 
