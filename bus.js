@@ -22,11 +22,11 @@ function fetchBusApi() {
             .map(dataset => {
                 
                 document.getElementById("busDepartures").innerHTML +=
-                `<div>
-                    <span class='departure-font'>${dataset.num}</span>
-                    <span class='departure-font'>${dataset.name}</span>
-                    <span class='departure-font'>${dataset.countdown}</span>
-                </div>`;
+                `<tr>
+                    <td class='departure-font'>${dataset.num}</td>
+                    <td class='departure-font'>${dataset.name}</td>
+                    <td class='departure-font'>${dataset.countdown}</td>
+                </tr>`;
 
                 return dataset;
             })

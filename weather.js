@@ -1,25 +1,23 @@
+const DEBUG = false;
+
 window.onload = function() {
 
-    //document.getElementById("mainScreen").style.backgroundSize = "110%";
-    /*fetchBusApi();
-    fetchWeatherApi();
-    const weatherThread = setInterval(fetchWeatherApi, 60*1000);*/
-    //fetchTrainApi();
+    if (DEBUG) {
+      fetchWeatherApi();
+      return;
+    }
+
     fetchWeatherApi();
     fetchBusApi();
     setInterval(fetchWeatherApi, 60 * 1000);
     setInterval(fetchBusApi, 10 * 1000);
     setInterval(function() {
       let today = new Date();
-      let date = today.getDate().toString().padStart(2,"0")+'-'+(today.getMonth()+1).toString().padStart(2,"0")+'-'+today.getFullYear();
+      let date = today.getDate().toString().padStart(2,"0")+'.'+(today.getMonth()+1).toString().padStart(2,"0")+'.'+today.getFullYear();
       let time = today.getHours().toString().padStart(2,"0") + ":" + today.getMinutes().toString().padStart(2,"0") + ":" + today.getSeconds().toString().padStart(2,"0");
       let dateTime = date+' '+time;
       document.getElementById("aktuelleZeit").innerText = dateTime;
     }, 1000);
-    /*fetchTrainApi(JSON.parse(
-        `[{"id":"00401","num":"401","name":"Bruneck, Busbahnhof","countdown":2},{"id":"02320","num":"320.1","name":"Milland, Zeffer","countdown":2},{"id":"85310","num":"310","name":"Brixen, Bahnhof Brixen","countdown":6},{"id":"02328","num":"328","name":"Brixen, Bahnhof","countdown":8},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":10},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":12},{"id":"02170","num":"170","name":"Kastelruth, Busbahnhof","countdown":16},{"id":"02320","num":"320.1","name":"Albeins, Grundschule","countdown":17},{"id":"00401","num":"401","name":"Brixen, Bahnhof Brixen","countdown":18},{"id":"85310","num":"310","name":"Sterzing, Nordpark","countdown":23},{"id":"02328","num":"328","name":"Natz - Schabs","countdown":25},{"id":"02320","num":"320.1","name":"Vahrn, Post","countdown":27}]`
-    ));*/
-
 }
 
 function fetchWeatherApi() {
@@ -109,7 +107,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2SunCloud"></div>
             <div class="Circle3SunCloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bevölkt</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bewölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -124,7 +122,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle1Cloud"></div>
             <div class="Circle2Cloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bevölkt</h1>
+              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Bewölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -140,7 +138,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2DarkCloud"></div>
             <div class="Circle3DarkCloud"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Stark bevölkt</h1>
+              <h1 class="Condition"><i class="material-icons sun"> ☁☁</i> Stark bewölkt</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -157,7 +155,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Rain"></div>
             <div class="Circle3Rain"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Regen</h1>
+              <h1 class="Condition"><i class="material-icons sun">🌧</i> Regen</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -175,7 +173,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Storm"></div>
             <div class="Circle3Storm"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Gewitter</h1>
+              <h1 class="Condition"><i class="material-icons sun">🗲</i> Gewitter</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -192,7 +190,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
             <div class="Circle2Rain"></div>
             <div class="Circle3Rain"></div>
             <div class="content">
-              <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Schnee</h1>
+              <h1 class="Condition"><i class="material-icons sun">❄</i> Schnee</h1>
               <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
               <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
               <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
@@ -208,7 +206,7 @@ function createWeatherIcon(date, minTemp, maxTemp, weatherInfo) {
           <div class="Circle2Fog"></div>
           <div class="Circle3Fog"></div>
           <div class="content">
-            <h1 class="Condition"><i class="material-icons sun">wb_cloudy</i> Nebel</h1>
+            <h1 class="Condition"><i class="material-icons sun">🌫</i> Nebel</h1>
             <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
             <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
             <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>

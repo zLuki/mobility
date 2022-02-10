@@ -612,3 +612,11 @@ body {
     margin-top: 15px;
     margin-left: 15px;
 }
+
+#busDepartures, #trainDepartures {
+    width: 80%;
+}
+
+.bb {
+    border-bottom: 1px solid orange !important;
+}

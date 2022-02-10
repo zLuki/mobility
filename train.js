@@ -75,17 +75,18 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
         )
         .forEach(dataset =>
             document.getElementById("trainDepartures").innerHTML += 
-            `<div>
-                <span class='departure-font'>${dataset[0].num}</span>
-                <span class='departure-font'>${dataset[0].name}</span>
-                <span class='departure-font'>${dataset[0].countdown}</span>
-            </div>
-            <div>
-                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].num : ""}</span>
-                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].name : ""}</span>
-                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].countdown : ""}</span>  
-            </div>
-            <span class='departure-font'>----------------------------------</span>`
+            `<tr>
+                <td class='departure-font'>${dataset[0].num}</td>
+                <td class='departure-font'>${dataset[0].name}</td>
+                <td class='departure-font'>${dataset[0].countdown}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class='bb'></td>
+                <td class='departure-font bb'>${dataset[1] ? dataset[1].num : ""}</td>
+                <td class='departure-font bb'>${dataset[1] ? dataset[1].name : ""}</td>
+                <td class='departure-font bb'>${dataset[1] ? dataset[1].countdown : ""}</td>  
+            </tr>`
             
         )
     });
