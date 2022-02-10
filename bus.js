@@ -3,7 +3,8 @@ function fetchBusApi() {
         method: "GET"
     })
     .then(res => res.text())
-    .then(res =>
+    .then(res => {
+        document.getElementById("busDepartures").innerHTML = "";
         fetchTrainApi(
             JSON.parse(res)
             .departureList
@@ -30,5 +31,5 @@ function fetchBusApi() {
                 return dataset;
             })
         )
-    );
+    });
 }

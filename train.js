@@ -25,7 +25,8 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
         method: "GET"
     })
     .then(res => res.text())
-    .then(res => 
+    .then(res => {
+        document.getElementById("trainDepartures").innerHTML = "";
         JSON.parse(res)
         .departureList
         .filter(dataset =>
@@ -78,10 +79,14 @@ function fetchTrainApi(busDeparturesAtFallmerayer) {
                 <span class='departure-font'>${dataset[0].num}</span>
                 <span class='departure-font'>${dataset[0].name}</span>
                 <span class='departure-font'>${dataset[0].countdown}</span>
-                <span class='departure-font'>${dataset[1] ? dataset[1].num : ""}</span>
-                <span class='departure-font'>${dataset[1] ? dataset[1].name : ""}</span>
-                <span class='departure-font'>${dataset[1] ? dataset[1].countdown : ""}</span>
-            </div>`
+            </div>
+            <div>
+                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].num : ""}</span>
+                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].name : ""}</span>
+                <span class='departure-font'>&emsp;${dataset[1] ? dataset[1].countdown : ""}</span>  
+            </div>
+            <span class='departure-font'>----------------------------------</span>`
+            
         )
-    );
+    });
 }

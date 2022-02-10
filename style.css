@@ -607,3 +607,8 @@ body {
 .departure-font {
     color: orange;
 }
+
+#aktuelleZeit {
+    margin-top: 15px;
+    margin-left: 15px;
+}
