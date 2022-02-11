@@ -28,16 +28,38 @@
         <h1 id="aktuelleZeit"></h1>
         <div class="screenContainer">
           <h3>Busse</h3>
-          <h4>------------------------------------------------------------</h4>
+          <h4>--------------------------------------------------</h4>
           <table id="busDepartures"></table>
         </div>
         <div class="screenContainer">
           <h3>Züge</h3>
-          <h4>------------------------------------------------------------</h4>
+          <h4>--------------------------------------------------</h4>
           <table id="trainDepartures"></table>
         </div>
       </div>
     </div>
+
+    <script>
+      const DEBUG = false;
+
+      window.onload = function() {
+
+        fetchWeatherApi();
+        fetchBusApi();
+        // Wetter regelmäßig aktualisieren
+        setInterval(fetchWeatherApi, 60 * 1000);
+        // Busse und Züge regelmäßig aktualisieren
+        setInterval(fetchBusApi, 10 * 1000);
+        // Zeit anzeigen
+        setInterval(function() {
+          let today = new Date();
+          let date = today.getDate().toString().padStart(2,"0")+'.'+(today.getMonth()+1).toString().padStart(2,"0")+'.'+today.getFullYear();
+          let time = today.getHours().toString().padStart(2,"0") + ":" + today.getMinutes().toString().padStart(2,"0") + ":" + today.getSeconds().toString().padStart(2,"0");
+          let dateTime = date+' '+time;
+          document.getElementById("aktuelleZeit").innerText = dateTime;
+        }, 1000);
+      }
+    </script>
 
 </body>
 </html>
