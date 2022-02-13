@@ -72,7 +72,13 @@ function fetchWeatherApi() {
 }
 
 function createWeatherIcon(index, date, minTemp, maxTemp, weatherInfo) {
-    
+    console.log("--------------------");
+    console.log(index);
+    console.log(date);
+    console.log(minTemp);
+    console.log(maxTemp);
+    console.log(weatherInfo);
+    console.log("---------------------");
     //weatherInfo = "50";
     //if (date == new Date().toISOString().split('T')[0]) {
     if (index === 0) {
@@ -81,7 +87,8 @@ function createWeatherIcon(index, date, minTemp, maxTemp, weatherInfo) {
         case "02": document.getElementById("mainScreen").style.backgroundImage = "url('./background.jpg')"; break;
         case "03": document.getElementById("mainScreen").style.backgroundImage = "url('./background_cloudy.jpg')"; break;
         case "04": document.getElementById("mainScreen").style.backgroundImage = "url('./background_dark_cloudy.png')"; break;
-        case "09" || "10": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
+        case "09": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
+        case "10": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
         case "11": document.getElementById("mainScreen").style.backgroundImage = "url('./background_rain_gif.gif')"; break;
         case "13": document.getElementById("mainScreen").style.backgroundImage = "url('./background_snow_gif.gif')"; break;
         case "50": document.getElementById("mainScreen").style.backgroundImage = "url('./background_fog.png')"; break;
@@ -152,7 +159,24 @@ function createWeatherIcon(index, date, minTemp, maxTemp, weatherInfo) {
           </div>
         </div>`;
         break;
-      case "09" || "10":
+      case "09":
+        document.getElementById("weatherDays").innerHTML +=
+        `<div class="containerRain">
+          <div class="background">
+            <div class="Regen"></div>
+            <div class="Circle1Rain"></div>
+            <div class="Circle2Rain"></div>
+            <div class="Circle3Rain"></div>
+            <div class="content">
+              <h1 class="Condition"><i class="material-icons sun">🌧</i> Regen</h1>
+              <h1 class="Temp">${Math.round(minTemp)}° / ${Math.round(maxTemp)}°</h1>
+              <h1 class="Time">${weekDays[new Date(date).getDay()]}</h1>
+              <h1 class="Location"><i class="material-icons locationIcon">place</i> Brixen, IT</h1>
+            </div>
+          </div>
+        </div>`;
+        break;
+      case "10":
         document.getElementById("weatherDays").innerHTML +=
         `<div class="containerRain">
           <div class="background">
