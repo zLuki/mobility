@@ -19,7 +19,10 @@ Beim Programmierstil wollten wir etwas neues ausprobieren und benutzen deshalb d
 
 ### Design
 
-Description coming soon ...
+Das Design ist unserer Meinung nach das, was die Webseite wirklich besonders macht, da wir uns sehr viel Mühe dafür gegeben haben.
+- Reines CSS
+- Icons von Googleapis oder Unicode
+- Größe passts sich an Bildschirm an, kann aber eventuell mit STRG + Mausrad verändert werden
 
 ### Autoren
 

@@ -1,20 +1,3 @@
-window.onload = function() {
-    fetchWeatherApi();
-    fetchBusApi();
-    // Wetter regelmäßig aktualisieren
-    setInterval(fetchWeatherApi, 60 * 1000);
-    // Busse und Züge regelmäßig aktualisieren
-    setInterval(fetchBusApi, 10 * 1000);
-    // Zeit anzeigen
-    setInterval(function() {
-      let today = new Date();
-      let date = today.getDate().toString().padStart(2,"0")+'.'+(today.getMonth()+1).toString().padStart(2,"0")+'.'+today.getFullYear();
-      let time = today.getHours().toString().padStart(2,"0") + ":" + today.getMinutes().toString().padStart(2,"0") + ":" + today.getSeconds().toString().padStart(2,"0");
-      let dateTime = date+' '+time;
-      document.getElementById("aktuelleZeit").innerText = dateTime;
-    }, 1000);
-}
-
 function fetchWeatherApi() {
     // Get request
     fetch("https://api.openweathermap.org/data/2.5/forecast?id=6535887&appid=dc704448494ba8187b5e3cf65aafac7f&cnt=40&units=metric&lang=de", {
@@ -72,14 +55,10 @@ function fetchWeatherApi() {
 }
 
 function createWeatherIcon(index, date, minTemp, maxTemp, weatherInfo) {
-    console.log("--------------------");
-    console.log(index);
-    console.log(date);
-    console.log(minTemp);
-    console.log(maxTemp);
-    console.log(weatherInfo);
-    console.log("---------------------");
-    //weatherInfo = "50";
+    
+    if (DEBUG) {
+      weatherInfo = DEBUG;
+    }
     //if (date == new Date().toISOString().split('T')[0]) {
     if (index === 0) {
       switch(weatherInfo) {
